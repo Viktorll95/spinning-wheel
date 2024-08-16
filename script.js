@@ -63,7 +63,7 @@ function draw() {
   for (let i = 0; i < items.length; i++, startDeg += step) {
     let endDeg = startDeg + step;
 
-    color = colors[i];
+    let color = colors[i];
     let colorStyle = `rgb(${color.r},${color.g},${color.b})`;
 
     ctx.beginPath();
@@ -99,12 +99,7 @@ function draw() {
       endDeg: endDeg,
     };
 
-    if (
-      startDeg % 360 < 360 &&
-      startDeg % 360 > 270 &&
-      endDeg % 360 > 0 &&
-      endDeg % 360 < 90
-    ) {
+    if (startDeg % 360 < 270 && endDeg % 360 >= 270) {
       document.getElementById("winner").innerHTML = items[i];
     }
   }
