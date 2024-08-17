@@ -1,17 +1,37 @@
 body {
-  background-color: #333;
+  /* background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+  background-color: #3a1c71; */
+
+  background: url("red-stage-background.avif") no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .header {
-  padding: 40px;
   color: #fff;
   margin: 0 auto;
-  margin-bottom: 40px;
+  margin-bottom: 2em;
 }
 
 .header h1,
 p {
+  margin: 0.5em;
   text-align: center;
+  font-size: 2em;
+}
+
+#winner {
+  width: 6em;
+  border: solid black;
+  padding: 0;
+  border-radius: 2em;
+  font-weight: bolder;
 }
 
 .wheel {
@@ -21,13 +41,17 @@ p {
 }
 
 .center-circle {
-  width: 15%;
-  height: 22%;
+  border: solid black 3px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background-color: #fff;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .triangle {
@@ -37,7 +61,7 @@ p {
   border-right: 10px solid transparent;
   border-top: 20px solid rgb(255, 255, 255);
   position: absolute;
-  top: -200%;
+  top: -290%;
   right: 50%;
   transform: translateX(50%);
 }
@@ -49,13 +73,16 @@ textarea {
   color: #fff;
 }
 
-.inputArea {
+.input-area {
   display: flex;
   justify-content: center;
   margin-top: 40px;
+  text-transform: capitalize;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
-#canvas {
-  height: 70%;
-  width: 70%;
+.spin {
+  font-size: 1.5em;
+  font-weight: bolder;
 }

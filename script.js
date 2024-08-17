@@ -30,7 +30,10 @@ const centerX = width / 2;
 const centerY = height / 2;
 const radius = width / 2;
 
-let items = document.getElementsByTagName("textarea")[0].value.split("\n");
+let items = document
+  .getElementsByTagName("textarea")[0]
+  .value.trim()
+  .split("\n");
 
 let currentDeg = 0;
 let step = 360 / items.length;
@@ -85,12 +88,14 @@ function draw() {
     ctx.translate(centerX, centerY);
     ctx.rotate(toRad((startDeg + endDeg) / 2));
     ctx.textAlign = "center";
+
+    let textColor;
     if (color.r > 150 || color.g > 150 || color.b > 150) {
-      ctx.fillStyle = "#000";
+      ctx.fillStyle = textColor = "#000";
     } else {
-      ctx.fillStyle = "#fff";
+      ctx.fillStyle = textColor = "#fff";
     }
-    ctx.font = "bold 24px serif";
+    ctx.font = "bold 30px serif";
     ctx.fillText(items[i], 130, 10);
     ctx.restore();
 
@@ -101,6 +106,8 @@ function draw() {
 
     if (startDeg % 360 < 270 && endDeg % 360 >= 270) {
       document.getElementById("winner").innerHTML = items[i];
+      document.getElementById("winner").style.backgroundColor = colorStyle;
+      document.getElementById("winner").style.color = textColor;
     }
   }
 }
