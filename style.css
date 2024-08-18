@@ -26,15 +26,36 @@ body {
   align-items: center;
 }
 
-.header h1,
-p {
+.header h1 {
   margin: 0.5em;
   text-align: center;
-  font-size: 2em;
+  font-size: 2.5em;
+}
+
+#title {
+  margin: 0em;
+  margin-top: 0.5em;
+}
+
+.first-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+}
+
+.wheel-info {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 #winner {
-  width: 6em;
+  margin-top: 3em;
+  text-align: center;
+  width: 100%;
+  font-size: 2em;
   border: none;
   padding: 0;
   border-radius: 2em;
@@ -49,8 +70,8 @@ p {
 
 #center-circle {
   border: solid black 3px;
-  width: 80px;
-  height: 80px;
+  width: 15%;
+  height: 15%;
   border-radius: 50%;
   background: linear-gradient(45deg, #e62f2f, #b00a0a);
   position: absolute;
@@ -68,7 +89,7 @@ p {
   border-right: 10px solid transparent;
   border-top: 20px solid rgb(255, 255, 255);
   position: absolute;
-  top: -290%;
+  top: -300%;
   right: 50%;
   transform: translateX(50%);
 }
@@ -95,7 +116,7 @@ textarea {
 
 .btn-group-after-spin {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1em;
@@ -104,7 +125,7 @@ textarea {
 .btn {
   background: linear-gradient(45deg, #e62f2f, #b00a0a);
   width: 8em;
-  font-size: large;
+  font-size: 1.5em;
   border: none;
   padding: 0;
   border-radius: 2em;
@@ -120,14 +141,6 @@ textarea {
   transform: translateY(0.3em);
 }
 
-#btn-remove-name {
-  background: linear-gradient(315deg, #ff0000, #6e0202);
-}
-
-#btn-spin-again {
-  background: linear-gradient(45deg, #ff0000, #6e0202);
-}
-
 .hidden {
   opacity: 0;
   transition: 0.5s;
@@ -140,4 +153,67 @@ textarea {
 
 .btn-group-options {
   margin-top: 3em;
+}
+
+@media (max-width: 700px) {
+  .first-container {
+    flex-direction: column;
+    width: 80%;
+  }
+}
+
+@media (min-width: 850px) {
+  #canvas {
+    width: 600px;
+    height: 600px;
+  }
+}
+@media (min-width: 1050px) {
+  .header h1 {
+    font-size: 3em;
+  }
+  #canvas {
+    width: 700px;
+    height: 700px;
+  }
+}
+@media (min-width: 1250px) {
+  .header h1 {
+    font-size: 4em;
+  }
+  #canvas {
+    width: 750px;
+    height: 750px;
+  }
+}
+@media (min-width: 1500px) {
+  .header h1 {
+    font-size: 5em;
+  }
+  #canvas {
+    width: 900px;
+    height: 900px;
+  }
+}
+@media (min-width: 2000px) {
+  .header h1 {
+    font-size: 6em;
+  }
+  #canvas {
+    width: 1300px;
+    height: 1300px;
+  }
+
+  .wheel-info {
+    font-size: 2em;
+  }
+}
+@media (min-width: 3800px) {
+  .header h1 {
+    font-size: 8em;
+  }
+  #canvas {
+    width: 1750px;
+    height: 1750px;
+  }
 }

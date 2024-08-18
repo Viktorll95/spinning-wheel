@@ -31,6 +31,7 @@ const centerY = height / 2;
 const radius = width / 2;
 
 const spinSound = new Audio("spin-sound.mp3");
+const tadaFanfare = new Audio("tada-fanfare.mp3");
 
 let items = document
   .getElementsByTagName("textarea")[0]
@@ -140,6 +141,7 @@ function animate() {
   if (pause) {
     console.log("paused");
     showBtnGroupAfterSpin();
+    tadaFanfare.play();
     return;
   }
   speed = easeOutSine(getPercent(currentDeg, maxRotation, 0)) * 20;

@@ -8,24 +8,33 @@
   </head>
   <body>
     <div class="header">
-      <h1>Spinn the wheel!</h1>
-      <p id="winner">NONE</p>
-      <div class="btn-group-after-spin hidden">
-        <button id="btn-remove-name" class="btn">Remove name</button>
-        <button id="btn-spin-again" class="btn">Spin again</button>
+      <h1 id="title">Spinn the wheel!</h1>
+    </div>
+
+    <div class="first-container">
+      <div class="wheel">
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <div class="center-circle btn" id="center-circle" onclick="spin()">
+          <p class="spin">SPIN!</p>
+          <div class="triangle"></div>
+        </div>
+      </div>
+
+      <div class="wheel-info">
+        <p id="winner">NONE</p>
+        <div class="btn-group-after-spin hidden">
+          <button id="btn-remove-name" class="btn">Remove name</button>
+          <button id="btn-spin-again" class="btn">Spin again</button>
+        </div>
       </div>
     </div>
-    <div class="wheel">
-      <canvas id="canvas" width="500" height="500"></canvas>
-      <div class="center-circle btn" id="center-circle" onclick="spin()">
-        <p class="spin">SPIN!</p>
-        <div class="triangle"></div>
-      </div>
-    </div>
-    <div class="btn-group-options">
+
+    <!-- Would be fun to add music to the page at some point: -->
+    <!-- <div class="btn-group-options">
       <button class="btn">Circus music</button>
-      <button class="btn">Sound</button>
-    </div>
+      <button class="btn">Exceting music</button>
+      <button class="btn">Sound on</button>
+    </div> -->
     <div class="input-area">
       <textarea rows="30" cols="30" onchange="createWheel()">
         Alice
