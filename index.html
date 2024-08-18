@@ -10,23 +10,21 @@
     <div class="header">
       <h1>Spinn the wheel!</h1>
       <p id="winner">NONE</p>
-      <div class="btn-group-after-spin">
-        <button id="btn-remove-name">Remove name</button>
-        <button id="btn-spin-again">Spin again</button>
+      <div class="btn-group-after-spin hidden">
+        <button id="btn-remove-name" class="btn">Remove name</button>
+        <button id="btn-spin-again" class="btn">Spin again</button>
       </div>
     </div>
     <div class="wheel">
       <canvas id="canvas" width="500" height="500"></canvas>
-      <div class="center-circle" onclick="spin()">
+      <div class="center-circle btn" id="center-circle" onclick="spin()">
         <p class="spin">SPIN!</p>
         <div class="triangle"></div>
       </div>
     </div>
-    <div class="options">
-      <ul>
-        <li>Circus music</li>
-        <li>Sound</li>
-      </ul>
+    <div class="btn-group-options">
+      <button class="btn">Circus music</button>
+      <button class="btn">Sound</button>
     </div>
     <div class="input-area">
       <textarea rows="30" cols="30" onchange="createWheel()">

@@ -30,6 +30,8 @@ const centerX = width / 2;
 const centerY = height / 2;
 const radius = width / 2;
 
+const spinSound = new Audio("spin-sound.mp3");
+
 let items = document
   .getElementsByTagName("textarea")[0]
   .value.trim()
@@ -125,20 +127,19 @@ let pause = false;
 
 const btnGroupAfterSpin = document.querySelector(".btn-group-after-spin");
 
-function toggleBtnGroupAfterSpin() {
-  if (btnGroupAfterSpin.classList.contains("hidden")) {
-    btnGroupAfterSpin.classList.add("visible");
-    btnGroupAfterSpin.classList.remove("hidden");
-  } else {
-    btnGroupAfterSpin.classList.add("hidden");
-    btnGroupAfterSpin.classList.remove("visible");
-  }
+function hideBtnGroupAfterSpin() {
+  btnGroupAfterSpin.classList.add("hidden");
+  btnGroupAfterSpin.classList.remove("visible");
+}
+function showBtnGroupAfterSpin() {
+  btnGroupAfterSpin.classList.add("visible");
+  btnGroupAfterSpin.classList.remove("hidden");
 }
 
 function animate() {
   if (pause) {
     console.log("paused");
-    toggleBtnGroupAfterSpin();
+    showBtnGroupAfterSpin();
     return;
   }
   speed = easeOutSine(getPercent(currentDeg, maxRotation, 0)) * 20;
@@ -152,7 +153,8 @@ function animate() {
 }
 
 function spin() {
-  toggleBtnGroupAfterSpin();
+  spinSound.play();
+  hideBtnGroupAfterSpin();
   if (speed != 0) {
     return;
   }
