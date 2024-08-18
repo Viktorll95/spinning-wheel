@@ -11,12 +11,19 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .header {
   color: #fff;
   margin: 0 auto;
   margin-bottom: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .header h1,
@@ -71,6 +78,7 @@ textarea {
   caret-color: #fff;
   resize: none;
   color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .input-area {
@@ -78,11 +86,45 @@ textarea {
   justify-content: center;
   margin-top: 40px;
   text-transform: capitalize;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .spin {
   font-size: 1.5em;
   font-weight: bolder;
+}
+
+.btn-group-after-spin {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+#btn-remove-name {
+  width: 8em;
+  font-size: large;
+  border: solid black;
+  padding: 0;
+  border-radius: 2em;
+  font-weight: bolder;
+}
+
+#btn-spin-again {
+  width: 8em;
+  font-size: large;
+  border: solid black;
+  padding: 0;
+  border-radius: 2em;
+  font-weight: bolder;
+}
+
+.hidden {
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.visible {
+  opacity: 1;
+  transition: 0.5s;
 }

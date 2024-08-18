@@ -1,4 +1,4 @@
-function randomColor() {
+function randomColor(lastColor = { r: 0, b: 0, g: 0 }) {
   r = Math.floor(Math.random() * 255);
   g = Math.floor(Math.random() * 255);
   b = Math.floor(Math.random() * 255);
@@ -41,15 +41,22 @@ let colors = [];
 let itemDegs = {};
 
 for (let i = 0; i < items.length + 1; i++) {
-  colors.push(randomColor());
+  let lastColor;
+  if (i > 0) lastColor = colors[i - 1];
+  colors.push(randomColor(lastColor));
 }
 
 function createWheel() {
-  items = document.getElementsByTagName("textarea")[0].value.split("\n");
+  items = document
+    .getElementsByTagName("textarea")[0]
+    .value.split("\n")
+    .filter((item) => item !== "");
+  console.log(items);
   step = 360 / items.length;
-  colors = [];
   for (let i = 0; i < items.length + 1; i++) {
-    colors.push(randomColor());
+    if (!colors[i]) {
+      colors.push(randomColor());
+    }
   }
   draw();
 }
@@ -116,8 +123,22 @@ let speed = 0;
 let maxRotation = randomRange(360 * 3, 360 * 6);
 let pause = false;
 
+const btnGroupAfterSpin = document.querySelector(".btn-group-after-spin");
+
+function toggleBtnGroupAfterSpin() {
+  if (btnGroupAfterSpin.classList.contains("hidden")) {
+    btnGroupAfterSpin.classList.add("visible");
+    btnGroupAfterSpin.classList.remove("hidden");
+  } else {
+    btnGroupAfterSpin.classList.add("hidden");
+    btnGroupAfterSpin.classList.remove("visible");
+  }
+}
+
 function animate() {
   if (pause) {
+    console.log("paused");
+    toggleBtnGroupAfterSpin();
     return;
   }
   speed = easeOutSine(getPercent(currentDeg, maxRotation, 0)) * 20;
@@ -131,6 +152,7 @@ function animate() {
 }
 
 function spin() {
+  toggleBtnGroupAfterSpin();
   if (speed != 0) {
     return;
   }
@@ -145,3 +167,32 @@ function spin() {
   pause = false;
   window.requestAnimationFrame(animate);
 }
+
+document
+  .querySelector("#btn-remove-name")
+  .addEventListener("click", function () {
+    const winnerName = document.getElementById("winner").innerHTML;
+    const trimmedItems = items.map((item) => item.trim());
+    const filteredItems = trimmedItems.filter(
+      (item) =>
+        item.trim().toLowerCase() !== winnerName.trim().toLowerCase() &&
+        item !== ""
+    );
+    // Eight whitespaces to push out the word, can be removed
+    const itemStr = filteredItems.reduce((acc, item, i, arr) => {
+      return `${acc}\n        ${item}`;
+    }, "");
+    console.log(itemStr);
+    document.getElementsByTagName("textarea")[0].value = itemStr;
+
+    createWheel();
+  });
+
+document
+  .querySelector("#btn-spin-again")
+  .addEventListener("click", function () {
+    spin();
+  });
+
+// document.getElementsByTagName("textarea")[0].value = `Viktor \n Bee`;
+// createWheel();
