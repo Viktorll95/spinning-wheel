@@ -106,7 +106,8 @@ function draw() {
       ctx.fillStyle = textColor = "#fff";
     }
     ctx.font = "bold 30px serif";
-    ctx.fillText(items[i], 130, 10);
+    // ten whitespaces to push out the word and create distance from the middle, can be removed
+    ctx.fillText(`          ${items[i]}`, 130, 10);
     ctx.restore();
 
     itemDegs[items[i]] = {
@@ -182,9 +183,9 @@ document
         item.trim().toLowerCase() !== winnerName.trim().toLowerCase() &&
         item !== ""
     );
-    // Eight whitespaces to push out the word, can be removed
+    // Eight whitespaces to push out the word and create distance from the middle, can be removed
     const itemStr = filteredItems.reduce((acc, item, i, arr) => {
-      return `${acc}\n        ${item}`;
+      return `${acc}\n${item}`;
     }, "");
     console.log(itemStr);
     document.getElementsByTagName("textarea")[0].value = itemStr;

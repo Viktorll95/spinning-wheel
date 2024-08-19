@@ -38,13 +38,14 @@ body {
 }
 
 .first-container {
+  width: 80%;
   display: flex;
   flex-direction: row;
   gap: 1em;
 }
 
 .wheel-info {
-  width: 25%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -184,6 +185,9 @@ textarea {
   #canvas {
     width: 750px;
     height: 750px;
+  }
+  #winner {
+    font-size: 3em;
   }
 }
 @media (min-width: 1500px) {
